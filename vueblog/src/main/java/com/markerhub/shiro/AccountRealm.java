@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class AccountRealm extends AuthorizingRealm {
+    //身份认证 token 密码校验
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
