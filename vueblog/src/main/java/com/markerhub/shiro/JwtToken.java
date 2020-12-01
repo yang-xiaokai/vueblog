@@ -2,7 +2,7 @@ package com.markerhub.shiro;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
-public class JwtToken extends AuthenticationToken {
+public class JwtToken implements AuthenticationToken {
 
     private String token;
     //工作方法
