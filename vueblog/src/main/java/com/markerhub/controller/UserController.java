@@ -6,11 +6,10 @@ import com.markerhub.common.lang.Result;
 import com.markerhub.entity.User;
 import com.markerhub.mapper.UserMapper;
 import com.markerhub.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class UserController {
 
     @Autowired
     private UserMapper userMapper;
-
+    @RequiresAuthentication
     @GetMapping("/index")
     public Result index(){
         User user=userService.getById(1);
@@ -33,13 +32,15 @@ public class UserController {
     }
     @RequestMapping("/select")
     public Result selectUser(){
-        Result result =new Result();
         User user = userMapper.selectById(1);
-        if(user!=null){
-            return Result.succ(user);
-        }else{
-            return Result.fail("信息错误,请重试!!!");
-        }
+        return Result.succ(user);
+    }
+
+    //校验测试
+    @PostMapping("/save")
+    public Result save(@Validated  @RequestBody User user){
+
+        return Result.succ(user);
     }
 
 
