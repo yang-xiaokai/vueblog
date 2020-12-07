@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
@@ -22,10 +24,13 @@ public class Blog implements Serializable {
 
     private Long userId;
 
+    @NotBlank(message = "标题不能为空")
     private String title;
 
+    @NotBlank(message = "摘要不能为空")
     private String description;
 
+    @NotBlank(message = "内容不能为空")
     private String content;
 
     private LocalDateTime created;
@@ -90,5 +95,18 @@ public class Blog implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Blog{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", content='" + content + '\'' +
+                ", created=" + created +
+                ", status=" + status +
+                '}';
     }
 }
