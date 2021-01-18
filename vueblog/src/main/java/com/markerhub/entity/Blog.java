@@ -18,7 +18,7 @@ import javax.validation.constraints.NotBlank;
 public class Blog implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    //博客实体类
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
