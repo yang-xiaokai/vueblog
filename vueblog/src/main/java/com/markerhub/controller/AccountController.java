@@ -46,6 +46,14 @@ public class AccountController {
                 .put("email",user.getEmail())
                 .map());
     }
+    @RequestMapping("/inUser")
+    public Result inUser(@RequestBody LoginDto loginDto){
+//        if(null!=loginDto){
+//            userService.save();
+//        }
+
+        return null;
+    }
 
     @RequiresAuthentication
     @GetMapping("/logout")
